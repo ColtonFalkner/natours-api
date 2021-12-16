@@ -14,7 +14,7 @@ exports.getAllTours = (req, res) => {
 
 exports.getTour = (req, res) => {
   console.log(req.params);
-  const id = req.params.id * 1;
+  // const id = req.params.id * 1;
   // const tour = tours.find((el) => el.id === id);
 
   // // if (id > tours.length) {
@@ -35,6 +35,9 @@ exports.getTour = (req, res) => {
 
 exports.createTour = async (req, res) => {
   try {
+    // const newTour = new Tour({})
+    // newTour.save()
+
     const newTour = await Tour.create(req.body);
 
     res.status(201).json({
