@@ -1,14 +1,19 @@
 const mongoose = require('mongoose');
 
+/* eslint-disable */
 const tourSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'A tour must have a name'],
     unique: true,
   },
-  rating: {
+  ratingsAverage: {
     type: Number,
     default: 4.5,
+  },
+  ratingsQuantity: {
+    type: Number,
+    default: 0,
   },
   price: {
     type: Number,
@@ -17,6 +22,10 @@ const tourSchema = new mongoose.Schema({
   duration: {
     type: Number,
     required: [true, 'A tour must have a duration'],
+  },
+  maxGroupSize: {
+    type: Number,
+    required: [true, 'A tour must have a group size'],
   },
   difficulty: {
     type: String,
