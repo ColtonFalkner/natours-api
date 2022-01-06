@@ -1,27 +1,11 @@
 const mongoose = require('mongoose');
 
-/* eslint-disable */
 const tourSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'A tour must have a name'],
     unique: true,
     trim: true,
-  },
-  ratingsAverage: {
-    type: Number,
-    default: 4.5,
-  },
-  ratingsQuantity: {
-    type: Number,
-    default: 0,
-  },
-  price: {
-    type: Number,
-    required: [true, 'A tour must have a price'],
-  },
-  priceDiscount: {
-    type: Number,
   },
   duration: {
     type: Number,
@@ -38,6 +22,21 @@ const tourSchema = new mongoose.Schema({
       values: ['easy', 'medium', 'difficult'],
       message: 'Difficulty is either: easy, medium, or difficult',
     },
+  },
+  ratingsAverage: {
+    type: Number,
+    default: 4.5,
+  },
+  ratingsQuantity: {
+    type: Number,
+    default: 0,
+  },
+  price: {
+    type: Number,
+    required: [true, 'A tour must have a price'],
+  },
+  priceDiscount: {
+    type: Number,
   },
   summary: {
     type: String,
