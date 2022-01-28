@@ -9,7 +9,7 @@ exports.getAllTours = async (req, res) => {
 
     const query = Tour.find(queryObject);
 
-    // const query =  Tour.find()
+    // const query = Tour.find()
     //   .where('duration')
     //   .equals(5)
     //   .where('difficulty')
