@@ -32,10 +32,21 @@ exports.getAllTours = async (req, res) => {
     //3. Field Limiting
     if (req.query.fields) {
       const fields = req.query.fields.split(',').join(' ');
-      console.log(fields);
       query = query.select(fields);
     } else {
       query = query.select('-__v');
+    }
+
+    //4. Pagination
+    // page=2&limit=10 | 1-10 = page 1, 11-20 = page 2, etc..
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 100;
+    const skip = (page - 1) * limit;
+    query = query.skip(skip).limit(limit);
+
+    if (req.query.page) {
+      const numTours = await Tour.countDocuments();
+      if (skip >= numTours) throw new Error('This Page Does Not Exist');
     }
 
     const tours = await query;
